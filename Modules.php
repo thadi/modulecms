@@ -10,10 +10,10 @@ class Modules{
 	 */
 	public function getAbstractModule(){
 		if(!empty($this->modules["abstract"])){
-			return $this->modules["abstract"];
+			return$this->modules["abstract"];
 		}
-		$this->modules["abstract"] = new AbstractModule();			
-		return $this->modules["abstract"];
+$this->modules["abstract"] = new AbstractModule();
+return $this->modules["abstract"];
 	}
 
     /**
@@ -22,10 +22,10 @@ class Modules{
 	 */
 	public function getAdminModule(){
 		if(!empty($this->modules["admin"])){
-			return $this->modules["admin"];
+			return$this->modules["admin"];
 		}
-		$this->modules["admin"] = new AdminModule();			
-		return $this->modules["admin"];
+$this->modules["admin"] = new AdminModule();
+return $this->modules["admin"];
 	}
 
     /**
@@ -34,10 +34,10 @@ class Modules{
 	 */
 	public function getFileModule(){
 		if(!empty($this->modules["file"])){
-			return $this->modules["file"];
+			return$this->modules["file"];
 		}
-		$this->modules["file"] = new FileModule();			
-		return $this->modules["file"];
+$this->modules["file"] = new FileModule();
+return $this->modules["file"];
 	}
 
     /**
@@ -46,10 +46,10 @@ class Modules{
 	 */
 	public function getFilesystemModule(){
 		if(!empty($this->modules["filesystem"])){
-			return $this->modules["filesystem"];
+			return$this->modules["filesystem"];
 		}
-		$this->modules["filesystem"] = new FilesystemModule();			
-		return $this->modules["filesystem"];
+$this->modules["filesystem"] = new FilesystemModule();
+return $this->modules["filesystem"];
 	}
 
     /**
@@ -58,10 +58,10 @@ class Modules{
 	 */
 	public function getLogModule(){
 		if(!empty($this->modules["log"])){
-			return $this->modules["log"];
+			return$this->modules["log"];
 		}
-		$this->modules["log"] = new LogModule();			
-		return $this->modules["log"];
+$this->modules["log"] = new LogModule();
+return $this->modules["log"];
 	}
 
     /**
@@ -70,10 +70,10 @@ class Modules{
 	 */
 	public function getPersistenzModule(){
 		if(!empty($this->modules["persistenz"])){
-			return $this->modules["persistenz"];
+			return$this->modules["persistenz"];
 		}
-		$this->modules["persistenz"] = new PersistenzModule();			
-		return $this->modules["persistenz"];
+$this->modules["persistenz"] = new PersistenzModule();
+return $this->modules["persistenz"];
 	}
 
     /**
@@ -82,10 +82,10 @@ class Modules{
 	 */
 	public function getRequestModule(){
 		if(!empty($this->modules["request"])){
-			return $this->modules["request"];
+			return$this->modules["request"];
 		}
-		$this->modules["request"] = new RequestModule();			
-		return $this->modules["request"];
+$this->modules["request"] = new RequestModule();
+return $this->modules["request"];
 	}
 
     /**
@@ -94,10 +94,10 @@ class Modules{
 	 */
 	public function getSessionModule(){
 		if(!empty($this->modules["session"])){
-			return $this->modules["session"];
+			return$this->modules["session"];
 		}
-		$this->modules["session"] = new SessionModule();			
-		return $this->modules["session"];
+$this->modules["session"] = new SessionModule();
+return $this->modules["session"];
 	}
 
     /**
@@ -106,10 +106,10 @@ class Modules{
 	 */
 	public function getSettingModule(){
 		if(!empty($this->modules["setting"])){
-			return $this->modules["setting"];
+			return$this->modules["setting"];
 		}
-		$this->modules["setting"] = new SettingModule();			
-		return $this->modules["setting"];
+$this->modules["setting"] = new SettingModule();
+return $this->modules["setting"];
 	}
 
     /**
@@ -118,10 +118,10 @@ class Modules{
 	 */
 	public function getUriModule(){
 		if(!empty($this->modules["uri"])){
-			return $this->modules["uri"];
+			return$this->modules["uri"];
 		}
-		$this->modules["uri"] = new UriModule();			
-		return $this->modules["uri"];
+$this->modules["uri"] = new UriModule();
+return $this->modules["uri"];
 	}
 
     /**
@@ -130,10 +130,10 @@ class Modules{
 	 */
 	public function getUserModule(){
 		if(!empty($this->modules["user"])){
-			return $this->modules["user"];
+			return$this->modules["user"];
 		}
-		$this->modules["user"] = new UserModule();			
-		return $this->modules["user"];
+$this->modules["user"] = new UserModule();
+return $this->modules["user"];
 	}
 }
 ?>

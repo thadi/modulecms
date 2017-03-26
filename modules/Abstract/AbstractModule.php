@@ -4,10 +4,23 @@ class AbstractModule {
 
 	protected $data = array();
 
+	/**
+	 * Default method if no method is specified (via URL-Path)
+	 * The default behavior of the index-Method is to call the view-Method
+	 * @return string
+	 */
 	public function index(){
 		return $this->view();
 	}
 
+	/**
+	 * Startingpoint fot every request
+	 * Every module decides for itself how to handle a request on its module
+	 * The default behavior is to call the requested method (if it exists)  with the given arguments
+	 * @param string $methodName
+	 * @param array $arguments
+	 * @return mixed|string
+	 */
 	public function controller($methodName, $arguments = array()){
 		if(method_exists($this, $methodName)){
 			return call_user_func_array(array($this, $methodName), $arguments);
@@ -19,52 +32,114 @@ class AbstractModule {
 		}
 	}
 
+	/**
+	 * Returns the name of the current module
+	 * e.g. "Abstract", "Log"
+	 * @return string
+	 */
 	public function getModuleName(){
 		$className = get_class($this);
 		return preg_replace('/Module$/', '', $className);
 	}
 
+	/**
+	 * Returns the name of the current module in lowercase
+	 * @return string
+	 */
 	public function getModuleNameLower(){
 		return strtolower($this->getModuleName());
 	}
 
+	/**
+	 * Returns the path to the directory of the current module
+	 * @return string
+	 */
 	public function getDir(){
 		$module = $this->getModuleName();
 		return System::get()->moduleDir() . $module;
 	}
 
+	/**
+	 * Returns the path to the html-Folder of the current module
+	 * @return string
+	 */
 	public function getHtmlDir(){
 		return $this->getDir() . "/html";
 	}
 
+	/**
+	 * Returns the path to the css-Folder of the current module
+	 * @return string
+	 */
 	public function getCssDir(){
 		return $this->getDir() . "/css";
 	}
 
+	/**
+	 * Returns the path to the js-Folder of the current module
+	 * @return string
+	 */
 	public function getJsDir(){
 		return $this->getDir() . "/js";
 	}
 
+	/**
+	 * Returns the path to the files-Folder of the current module
+	 * @return string
+	 */
 	public function getFileDir(){
 		return $this->getDir() . "/file";
 	}
 
+	/**
+	 * Returns the content of the requested file
+	 * Every module can overwrite this behavior to meet its needs
+	 * @param string $fileName
+	 * @return string
+	 */
 	public function renderFile($fileName){
 		return $this->render($fileName, $this->getFileDir());
 	}
 
+	/**
+	 * Returns the content of the requested js-file
+	 * Every module can overwrite this behavior to meet its needs
+	 * @param string $jsName
+	 * @return string
+	 */
 	public function renderJs($jsName){
 		return $this->render($jsName, $this->getJsDir(), 'js');
 	}
 
+	/**
+	 * Returns the content of the requested css.file
+	 * Every module can overwrite this behavior to meet its needs
+	 * @param string $cssName
+	 * @return string
+	 */
 	public function renderCss($cssName){
 		return $this->render($cssName, $this->getCssDir(), 'css');
 	}
 
+	/**
+	 * Returns the content of the requested html-file
+	 * Every module can overwrite this behavior to meet its needs
+	 * @param string $htmlName
+	 * @return string
+	 */
 	public function renderHtml($htmlName){
 		return $this->render($htmlName, $this->getHtmlDir(), 'html');
 	}
 
+	/**
+	 * Returns the content of the requested file
+	 * If the file is not found in the specified $path (of a module),
+	 * the method looks in the abstract-module as a fallback
+	 * @param string $fileName
+	 * @param string $path
+	 * @param string $extension
+	 * @return string
+	 */
 	public function render($fileName, $path, $extension = false){
 		$file = $fileName . (!empty($extension) ? '.' . $extension : '');
 		$path = $path . '/' . $file;
@@ -82,7 +157,7 @@ class AbstractModule {
 			if(file_exists($altPath)){
 				return $this->render($fileName, System::get()->getModule()->getAbstractModule()->$dirFn(), $extension);
 			}
-			System::get()->getModule("log")->error($this->getModuleName(), "file not found: " . $path);
+			System::get()->getModule()->getLogModule()->error($this->getModuleName(), "file not found: " . $path);
 			return '';
 		}
 	}
