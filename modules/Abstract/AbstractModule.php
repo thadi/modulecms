@@ -10,7 +10,7 @@ class AbstractModule {
 
 	public function controller($methodName, $arguments = array()){
 		if(method_exists($this, $methodName)){
-			return call_user_method_array($methodName, $this, $arguments);	
+			return call_user_func_array(array($this, $methodName), $arguments);
 		}else{
 			$this->data['moduleName'] = $this->getModuleName();
 			$this->data['methodName'] = $methodName;
@@ -76,9 +76,9 @@ class AbstractModule {
 		}else{
 			$dirFn = "getFileDir";
 			if($extension){
-				$dirFn = "get" . ucfirst($extension) . "Dir";	
+				$dirFn = "get" . ucfirst($extension) . "Dir";
 			}
-			$altPath = System::get()->getModule()->getAbstractModule()->$dirFn() . '/' . $file; 
+			$altPath = System::get()->getModule()->getAbstractModule()->$dirFn() . '/' . $file;
 			if(file_exists($altPath)){
 				return $this->render($fileName, System::get()->getModule()->getAbstractModule()->$dirFn(), $extension);
 			}
@@ -114,7 +114,7 @@ class AbstractModule {
 		$data = $this->get($query);
 
 		$max_page = ceil($data['hits']['total'] / $query['size']);
-		$cur_page = floor($query['from'] / $query['size']) + 1;	
+		$cur_page = floor($query['from'] / $query['size']) + 1;
 		$this->data['info'] = array(
 			"total_hits" => $data['hits']['total'],
 			"cur_page" => $cur_page,
@@ -129,7 +129,7 @@ class AbstractModule {
 		if($cur_page < $max_page){
 			$this->data['info']['next_page'] = System::get()->getModule()->getUriModule()->getCurrentUri(array(
 				"page" => ($cur_page + 1)
-			));	
+			));
 		}
 
 		$this->data["entries"] = array();
@@ -163,7 +163,7 @@ class AbstractModule {
 	}
 
 	public function del($id = false){
-		System::get()->getModule()->getPersistenzModule()->del($this->getModuleNameLower(), $id);
+		System::get()->getModule()->getPersistenzModule()->delData($this->getModuleNameLower(), $id);
 		System::get()->getModule()->getRequestModule()->forward($this->getAdminActionUri());
 	}
 
@@ -186,11 +186,11 @@ class AbstractModule {
 	}
 
 	public function set($id = false, $data = array()){
-		return System::get()->getModule()->getPersistenzModule()->set($this->getModuleName(), $id, $data);
+		return System::get()->getModule()->getPersistenzModule()->setData($this->getModuleName(), $id, $data);
 	}
 
 	public function get($query = array()){
-		return System::get()->getModule()->getPersistenzModule()->get($this->getModuleName(), $query);
+		return System::get()->getModule()->getPersistenzModule()->getData($this->getModuleName(), $query);
 	}
 
 	public function getById($id){
@@ -206,7 +206,7 @@ class AbstractModule {
 		return System::get()->getModule()->getUriModule()->getModuleUri($this->getModuleNameLower(), $action, $arguments);
 	}
 	public function getAdminActionUri($action = false, $arguments = array()){
-		return System::get()->getModule()->getUriModule()->getAdminUri($this->getModuleNameLower(), $action, $arguments);	
+		return System::get()->getModule()->getUriModule()->getAdminUri($this->getModuleNameLower(), $action, $arguments);
 	}
 }
 

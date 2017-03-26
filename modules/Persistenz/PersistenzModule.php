@@ -2,7 +2,7 @@
 
 class PersistenzModule extends AbstractModule{
 
-	public function set($module, $id = false, $data = array()){
+	public function setData($module, $id = false, $data = array()){
 		$module = strtolower($module);
 		$queryUrl = 'localhost:9200/' . System::get()->projectName() . '/' . $module;
 		$method = "POST";
@@ -17,7 +17,7 @@ class PersistenzModule extends AbstractModule{
 		));
 	}
 
-	public function get($module, $query = array()){
+	public function getData($module, $query = array()){
 		if(is_array($module)){
 			$module = $this->getModuleName();
 		}
@@ -34,7 +34,7 @@ class PersistenzModule extends AbstractModule{
 		));
 	}
 
-	public function del($module, $id = false){
+	public function delData($module, $id = false){
 		$module = strtolower($module);
 		$queryUrl = 'localhost:9200/' . System::get()->projectName() . '/' . $module;
 		if(!empty($id)){
@@ -44,7 +44,7 @@ class PersistenzModule extends AbstractModule{
 		return $this->curl($queryUrl, array(
 			"method" => $method,
 			"json" => true
-		));	
+		));
 	}
 
 	public function getIdQuery($id){
