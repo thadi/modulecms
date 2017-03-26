@@ -1,0 +1,17 @@
+<html>
+	<head>
+		<title>Adminmenu <?= $this->data['module'] ?></title>
+		<link rel="stylesheet" href="/file/css/main.css">
+	</head>
+
+	<body>
+
+		<?= System::get()->getModule("admin")->renderHtml("adminHeader"); ?>
+
+		<div class="content">
+			<?= $this->data['content'] ?>
+		</div>
+
+	</body>
+
+</html>

@@ -1,0 +1,73 @@
+.grid{
+	margin: 15px;
+}
+
+.grid .toolbar{
+	background-color: #000;
+	color: #fff;
+	border: 1px solid #000;
+	overflow:hidden;
+	padding: 5px;
+}
+
+.grid .toolbar > *{
+	float:left;
+	padding: 0 5px;
+}
+
+.grid .toolbar .btn{
+	color:#fff;
+}
+
+.grid .actions .btn,
+.grid .actions .btn:visited{
+	display: inline-block;
+}
+
+.grid .actions .btn:hover{
+	cursor: pointer;
+	background-color: #fff;
+	color: #000;
+}
+
+.grid .info{
+	color: #dbdbdb;
+}
+
+.grid .info span{
+	color: #fff;
+}
+
+.grid .info .pagination{
+	float:right;
+}
+
+.grid table{
+	width: 100%;
+	color:#444;
+	background-color:#f1f1f1;
+	border-spacing: 0;
+}
+
+.grid table tr:hover{
+	background-color: #dbdbdb;
+}
+
+.grid table tr:first-child td{
+	border-top: 1px solid #ccc;
+}
+
+.grid table a,
+.grid table a:hover{
+	color:#444;
+}
+
+.grid table td:last-child{
+	border-right: 1px solid #ccc;	
+}
+
+.grid table td{
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	padding: 5px 10px;
+}

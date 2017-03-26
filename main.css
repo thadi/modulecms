@@ -1,0 +1,13 @@
+<?php 
+	$css = "";
+	$modules = System::getModules();
+	foreach($modules as $module){
+		$cssDir = System::get()->getModule($module)->getCssDir();
+		$cssFiles = System::get()->getModule("Filesystem")->getFiles($cssDir, "css");
+		foreach($cssFiles as $cssFile){
+			$file = preg_replace('/\.css$/', '', $cssFile);
+			$css .= System::get()->getModule($module)->renderCss($file);
+		}
+	}
+	echo $css;
+?>

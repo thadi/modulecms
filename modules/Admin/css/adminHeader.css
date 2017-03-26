@@ -1,0 +1,31 @@
+.adminHeader{
+	font-size: 15px;
+	letter-spacing: 0.1em;
+	background-color: #dbdbdb;
+	width: 100%;
+	box-shadow: 0 0 4px #888;
+	overflow: hidden;
+	padding: 0 20px;
+}
+
+.adminHeader ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.adminHeader ul li{
+	float: left;
+	padding: 5px 10px 5px 10px;
+}
+
+.adminHeader ul li:hover{
+	background-color: #ccc;
+}
+
+.adminHeader a,
+.adminHeader a:hover,
+.adminHeader a:visited{
+	color: #777;
+	text-decoration: none;
+}

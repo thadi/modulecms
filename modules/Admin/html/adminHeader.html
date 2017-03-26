@@ -1,0 +1,11 @@
+<div class="adminHeader">
+
+	<ul class="adminMenu">
+	<?php foreach($this->data['modules'] as $module): ?>
+		<li class="adminItem">
+			<a href="<?= System::get()->getModule('uri')->getAdminUri($module); ?>"><?= $module ?></a>
+		</li>
+	<?php endforeach; ?>
+	</ul>
+
+</div>

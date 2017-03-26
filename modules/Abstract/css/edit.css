@@ -1,0 +1,38 @@
+.edit{
+	margin: 15px;
+}
+
+.edit input[type="text"],
+.edit textarea{
+	padding: 10px;
+	display: block;
+	border: none;
+	background-color: #dbdbdb;
+	width: 100%;
+}
+
+.edit textarea{
+	min-height: 600px;
+}
+
+.edit .toolbar{
+	width: 100%;
+	background-color: #ccc;
+}
+
+.edit .toolbar > *{
+	cursor: pointer;
+	text-align: center;
+	margin: 3px;
+	padding: 5px 10px;
+	background-color: #f1f1f1;
+	color: #000;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	font-size: 18px;
+	display: inline-block;
+	line-height: 1.5em;
+	font-family: Helvetica;
+}

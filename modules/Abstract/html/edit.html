@@ -1,0 +1,10 @@
+<div class="edit">
+	<form action="<?= $this->getActionUri('save') ?>" method="post">
+		<input type="text" class="id" name="id" value="<?= $this->data['id'] ?>">
+		<textarea class="data" name="data"><?= $this->data['data'] ?></textarea>
+		<div class="toolbar">
+			<input class="save" type="submit" value="Save">
+			<a class="back" href="<?= System::get()->getModule('uri')->getAdminUri($this->getModuleNameLower()) ?>">Back</a>
+		</div>
+	</form>
+</div>

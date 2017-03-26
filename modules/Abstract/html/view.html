@@ -1,0 +1,53 @@
+
+<div class="grid">
+
+	<?php if(!empty($this->data['actions'])): ?>
+	<div class="toolbar actions">
+	<?php foreach($this->data['actions'] as $action): ?>
+		<a href="<?= $this->getAdminActionUri($action['action']) ?>" class="btn <?= $action['name'] ?>"><?= $action['name'] ?></a>
+	<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+
+	<div class="toolbar info">
+		<div class="totalHits">
+			Total Hits: <span><?= $this->data['info']['total_hits'] ?></span>
+		</div>
+		<div class="pages">
+			Page <span><?= $this->data['info']['cur_page'] ?></span> of <span><?= $this->data['info']['max_page'] ?></span>
+		</div>
+		<div class="size">
+			Hits per Page: <span><?= $this->data['info']['size'] ?></span>
+		</div>
+		<div class="pagination">
+			<?php if(!empty($this->data['info']['prev_page'])): ?>
+			<a class="btn" href="<?= $this->data['info']['prev_page'] ?>">Previous Page</a>
+			<?php endif; ?>
+			<?php if(!empty($this->data['info']['next_page'])): ?>
+			<a class="btn" href="<?= $this->data['info']['next_page'] ?>">Next Page</a>
+			<?php endif; ?>
+		</div>
+	</div>
+
+	<table>
+	<?php foreach($this->data['entries'] as $entry): ?>
+		<tr>
+			<td>
+				<a href="<?= $this->getAdminActionUri('del', $entry['id']) ?>">Delete</a>
+			</td>
+			<?php foreach($entry as $field => $value): ?>
+			<td> 
+				<?php if($field == "id"): ?>
+				<a href="<?= $this->getAdminActionUri('edit', $value) ?>">
+				<?php endif; ?>
+				<?= $value ?>
+				<?php if($field == "id"): ?>
+				</a>
+				<?php endif;?>
+			</td>
+			<?php endforeach; ?>
+		</tr>
+	<?php endforeach; ?>
+	</table>
+
+</div>
